@@ -19,6 +19,13 @@ fun MapScreen() {
         position = com.google.android.gms.maps.model.CameraPosition.fromLatLngZoom(ArequipaLocation, 12f)
     }
 
+    // Lista de ubicaciones adicionales (puntos de interés)
+    val locations = listOf(
+        LatLng(-16.4292, -71.5238), // JLByR
+        LatLng(-16.4160, -71.4824), // Paucarpata
+        LatLng(-16.3537, -71.5628)  // Zamacola
+    )
+
     Box(modifier = Modifier.fillMaxSize()) {
         // Añadir GoogleMap al layout
         GoogleMap(
@@ -31,6 +38,15 @@ fun MapScreen() {
                 icon = BitmapDescriptorFactory.fromResource(R.drawable.montana1), // icono personalizado
                 title = "Arequipa, Perú"
             )
+
+            // Añadir marcadores en las otras ubicaciones
+            locations.forEach { location ->
+                Marker(
+                    state = rememberMarkerState(position = location),
+                    title = "Punto de interés",
+                    snippet = "Ubicación"
+                )
+            }
         }
     }
 }
