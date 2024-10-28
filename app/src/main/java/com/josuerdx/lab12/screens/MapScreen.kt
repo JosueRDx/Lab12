@@ -3,7 +3,9 @@ package com.josuerdx.lab12.screens
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.rememberCameraPositionState
@@ -23,7 +25,9 @@ fun MapScreen() {
     val locations = listOf(
         LatLng(-16.4292, -71.5238), // JLByR
         LatLng(-16.4160, -71.4824), // Paucarpata
-        LatLng(-16.3537, -71.5628)  // Zamacola
+        LatLng(-16.3537, -71.5628),  // Zamacola
+        LatLng(-16.2521, -71.6837)  // Yura
+
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -48,5 +52,12 @@ fun MapScreen() {
                 )
             }
         }
+    }
+    // Controlar la cámara programáticamente
+    LaunchedEffect(Unit) {
+        cameraPositionState.animate(
+            update = CameraUpdateFactory.newLatLngZoom(LatLng(-16.2520984, -71.6836503), 12f), // Yura
+            durationMs = 3000
+        )
     }
 }
