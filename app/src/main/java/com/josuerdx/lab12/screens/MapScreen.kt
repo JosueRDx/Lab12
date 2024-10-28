@@ -11,6 +11,7 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.josuerdx.lab12.components.MapMarkers
 import com.josuerdx.lab12.components.MapPolygons
+import com.josuerdx.lab12.components.MapPolylines
 
 @Composable
 fun MapScreen() {
@@ -30,6 +31,9 @@ fun MapScreen() {
 
             // Dibujar polígonos
             MapPolygons()
+
+            // Dibujar polilíneas
+            MapPolylines()
         }
     }
 
